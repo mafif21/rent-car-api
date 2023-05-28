@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreRentCarRequest;
 use App\Models\Rentcar;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
+use PhpParser\Node\Stmt\TryCatch;
 
 class RentcarController extends Controller
 {
+    // complete
     public function index(Request $request)
     {
-        $limit = $request->input('limit', 10); // set a default limit of 10
+        $limit = $request->input('limit', 20); // set a default limit of 10
         $datas = Rentcar::paginate($limit);
 
         if (count($datas) > 0) {
@@ -18,6 +23,7 @@ class RentcarController extends Controller
                 "status" => 200,
                 "message" => "success",
                 "datas" => $datas,
+                "length" => count($datas),
             ], 200);
         } else {
             return response()->json([
@@ -28,41 +34,48 @@ class RentcarController extends Controller
         }
     }
 
+    // complete
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            "car_name" => "required|string|max:20",
-            "merk" => "required|string|max:20",
-            "price" => "required|integer",
-            "type" => "required",
-            "color" => "required",
-            "status" => "required",
+            'car_name' => 'required|string',
+            'merk' => 'required|string',
+            'image' => 'required|image',
+            'price' => 'required|integer',
+            'type' => 'required',
+            'color' => 'required|string',
+            'status' => 'required'
         ]);
 
         if ($validator->fails()) {
             return response()->json([
-                "status" => 422,
-                "message" => "input data failed",
-                "errors" => $validator->messages(),
+                'status' => 422,
+                'message' => 'Validation error',
+                'errors' => $validator->errors()
             ], 422);
-        } else {
-            $rentCar = Rentcar::create([
-                "car_name" => $request->car_name,
-                "merk" => $request->merk,
-                "price" => $request->price,
-                "type" => $request->type,
-                "color" => $request->color,
-                "status" => $request->status,
-            ]);
-
-            return response()->json([
-                "status" => 201,
-                "message" => "success",
-                "data" => $rentCar,
-            ], 201);
         }
+
+        $image = $request->file('image')->store('/public/rentcar-images');
+        $data = [
+            'car_name' => $request->car_name,
+            'merk' => $request->merk,
+            'image' => $image,
+            'price' => $request->price,
+            'type' => $request->type,
+            'color' => $request->color,
+            'status' => $request->status,
+        ];
+
+        Rentcar::create($data);
+
+        return response()->json([
+            'status' => 201,
+            'message' => 'Success',
+            'data' => $data
+        ], 201);
     }
 
+    // complete
     public function show(Rentcar $rentcar)
     {
         return response()->json([
@@ -74,45 +87,47 @@ class RentcarController extends Controller
 
     public function update(Request $request, Rentcar $rentcar)
     {
-        $validator = Validator::make($request->all(), [
-            "car_name" => "required|string|max:20",
-            "merk" => "required|string|max:20",
-            "price" => "required|integer",
-            "type" => "required",
-            "color" => "required",
-            "status" => "required",
-        ]);
+        try {
+            $image = $rentcar->image;
 
-        if ($validator->fails()) {
-            return response()->json([
-                "status" => 422,
-                "message" => "input data failed",
-                "errors" => $validator->messages(),
-            ], 422);
-        } else {
-            $rentcar->update([
-                "car_name" => $request->car_name,
-                "merk" => $request->merk,
-                "price" => $request->price,
-                "type" => $request->type,
-                "color" => $request->color,
-                "status" => $request->status,
-            ]);
+            if ($request->hasFile('image')) {
+                Storage::delete($rentcar->image);
+                $image = $request->file('image')->store('/public/rentcar-images');
+            }
+
+            $rentcar->car_name = $request->input('car_name');
+            $rentcar->merk = $request->input('merk');
+            $rentcar->image = $image;
+            $rentcar->price = $request->input('price');
+            $rentcar->type = $request->input('type');
+            $rentcar->color = $request->input('color');
+            $rentcar->status = $request->input('status');
+            $rentcar->save();
 
             return response()->json([
-                "status" => 200,
-                "message" => "edit data success",
+                "status" => 202,
+                "message" => "Update successfully",
                 "data" => $rentcar,
-            ], 200);
+            ]);
+        } catch (ModelNotFoundException $exception) {
+            return response()->json([
+                "status" => 404,
+                "message" => "Data not found",
+            ]);
         }
     }
 
+    // complete
     public function destroy(Rentcar $rentcar)
     {
+        if ($rentcar->image) {
+            Storage::delete($rentcar->image);
+        }
+
         $rentcar->delete();
         return response()->json([
             "status" => 200,
-            "message" => "deletion successful.",
+            "message" => "delete successful.",
         ], 200);
     }
 }

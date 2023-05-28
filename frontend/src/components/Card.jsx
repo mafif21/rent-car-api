@@ -1,6 +1,8 @@
 import React from "react";
 
 const Card = ({ title, merk, type, image, price, status, delay }) => {
+  const cleanImage = image.substring(image.lastIndexOf("/") + 1);
+  const imageUrl = `http://localhost:8000/storage/rentcar-images/${cleanImage}`;
   const rupiahFormat = new Intl.NumberFormat("id-ID", {
     style: "currency",
     currency: "IDR",
@@ -12,7 +14,7 @@ const Card = ({ title, merk, type, image, price, status, delay }) => {
       data-aos-delay={delay}
     >
       <div className="relative">
-        <img className="rounded-t-lg" src={image} alt={title} />
+        <img className="rounded-t-lg" src={imageUrl} alt={title} />
         <span className="absolute left-5 top-5 bg-blue-100 text-blue-800 text-xs font-medium mr-2 px-4 py-1 rounded">
           {type}
         </span>

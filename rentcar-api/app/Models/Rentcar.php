@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Rentcar extends Model
 {
     use HasFactory;
-    protected $fillable = ["car_name", "merk", "price", "type", "color", "status"];
+    protected $fillable = ["car_name", "merk", "image", "price", "type", "color", "status"];
 }

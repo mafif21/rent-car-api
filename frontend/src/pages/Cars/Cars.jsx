@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Banner from "../../assets/img/cars-page.jpg";
 import Card from "../../components/Card";
-import Image from "../../assets/img/jumbotron-image.jpg";
+// import Image from "../../assets/img/jumbotron-image.jpg";
 
 const Cars = () => {
   const [carFind, setCarFind] = useState("");
@@ -69,7 +69,7 @@ const Cars = () => {
               <Card
                 key={item.id}
                 title={item.car_name}
-                image={Image}
+                image={item.image}
                 type={item.type}
                 price={item.price}
                 status={item.status}

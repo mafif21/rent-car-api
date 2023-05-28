@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string("car_name");
             $table->string("merk");
+            $table->string('image');
             $table->integer("price");
             $table->enum("type", ["Manual", "Automatic"]);
             $table->string("color");
