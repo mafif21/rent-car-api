@@ -14,7 +14,7 @@ The REST API to the rent car app is described below.
 
 ### Get all data
 
-```http
+```
   GET /api/rentcars
 ```
 
@@ -23,6 +23,14 @@ The REST API to the rent car app is described below.
 | `limit`   | `string` | **Optional**. To determine the number of results to be returned from the Rentcar model |
 | `type`    | `string` | **Optional**. To find what type of the car, is it `automatic` or `manual`              |
 | `q`       | `string` | **Optional**. To find car by name                                                      |
+
+```
+  GET /api/rentcars/{id}
+```
+
+| Parameter | Type     | Description                         |
+| :-------- | :------- | :---------------------------------- |
+| `id`      | `string` | **Required**. To find specify by id |
 
 ## How to clone ?
 
