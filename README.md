@@ -8,6 +8,16 @@ With the Rent Car API, developers can retrieve real-time data on available cars,
 
 **Server:** Laravel
 
+## Documentation
+
+The REST API to the rent car app is described below.
+
+### Get list of things
+
+**Request**
+`GET /api/rentcars`
+http://localhost:8000/api/rentcars
+
 ## How to clone ?
 
 **Backend**
