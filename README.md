@@ -34,6 +34,22 @@ The REST API to the rent car app is described below.
 | :-------- | :------- | :--------------------------------------- |
 | `id`      | `string` | **Required**. To find spesific car by id |
 
+### Add Car Data
+
+```
+  POST /api/rentcars/
+```
+
+| Parameter  | Type     | Status                                                                                                              |
+| :--------- | :------- | :------------------------------------------------------------------------------------------------------------------ |
+| `car_name` | `string` | **Required**                                                                                                        |
+| `merk`     | `string` | **Required**                                                                                                        |
+| `image`    | `file`   | **Required**. Must be image                                                                                         |
+| `price`    | `string` | **Required**. Must be int                                                                                           |
+| `type`     | `string` | **Required**. there are 2 values that can be entered like `Automatic` oe `Manual` case sensitive must be Capitalize |
+| `color`    | `string` | **Required**.                                                                                                       |
+| `status`   | `string` | **Required**. there are 2 values that can be entered like `Booked` oe `Available` case sensitive must be Capitalize |
+
 ## How to clone ?
 
 **Backend**
