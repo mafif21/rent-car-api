@@ -24,13 +24,15 @@ The REST API to the rent car app is described below.
 | `type`    | `string` | **Optional**. To find what type of the car, is it `automatic` or `manual`              |
 | `q`       | `string` | **Optional**. To find car by name                                                      |
 
+### Get Spesific Car
+
 ```
   GET /api/rentcars/{id}
 ```
 
-| Parameter | Type     | Description                         |
-| :-------- | :------- | :---------------------------------- |
-| `id`      | `string` | **Required**. To find specify by id |
+| Parameter | Type     | Description                              |
+| :-------- | :------- | :--------------------------------------- |
+| `id`      | `string` | **Required**. To find spesific car by id |
 
 ## How to clone ?
 
