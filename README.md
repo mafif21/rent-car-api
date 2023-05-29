@@ -15,7 +15,7 @@ The REST API to the rent car app is described below.
 ### Get all data
 
 ```http
-  GET /api/items
+  GET /api/rentcars
 ```
 
 | Parameter | Type     | Description                                                                            |
