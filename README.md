@@ -8,72 +8,21 @@ With the Rent Car API, developers can retrieve real-time data on available cars,
 
 **Server:** Laravel
 
-## Documentation
+## API Documentation
 
 The REST API to the rent car app is described below.
 
-### Get list of things
+### Get all data
 
-#### Request
-
-`GET api/rentcars/`
-
-    http://localhost:8000/api/rentcars
-
-### Response
-
-    ```
-    {
-    "status": 200,
-    "message": "success",
-    "datas": {
-        "current_page": 1,
-        "data": [
-        ],
-        "first_page_url": "http://localhost:8000/api/rentcars?page=1",
-        "from": 1,
-        "last_page": 1,
-        "last_page_url": "http://localhost:8000/api/rentcars?page=1",
-        "links": [
-            {
-                "url": null,
-                "label": "&laquo; Previous",
-                "active": false
-            },
-            {
-                "url": "http://localhost:8000/api/rentcars?page=1",
-                "label": "1",
-                "active": true
-            },
-            {
-                "url": null,
-                "label": "Next &raquo;",
-                "active": false
-            }
-        ],
-        "next_page_url": null,
-        "path": "http://localhost:8000/api/rentcars",
-        "per_page": 20,
-        "prev_page_url": null,
-        "to": 10,
-        "total": 10
-    },
-    "length": 10
-
-}
-
+```http
+  GET /api/items
 ```
 
-### Response
-
-    HTTP/1.1 200 OK
-    Date: Thu, 24 Feb 2011 12:36:30 GMT
-    Status: 200 OK
-    Connection: close
-    Content-Type: application/json
-    Content-Length: 2
-
-    []
+| Parameter | Type     | Description                                                                            |
+| :-------- | :------- | :------------------------------------------------------------------------------------- |
+| `limit`   | `string` | **Optional**. To determine the number of results to be returned from the Rentcar model |
+| `type`    | `string` | **Optional**. To find what type of the car, is it `automatic` or `manual`              |
+| `q`       | `string` | **Optional**. To find car by name                                                      |
 
 ## How to clone ?
 
@@ -83,10 +32,8 @@ The REST API to the rent car app is described below.
 - So the api is using Laravel
 
 ```
-
 composer install
 npm install
-
 ```
 
 - Copy `.env.example` file to `.env` on the root folder. You can type copy `.env.example .env` if using command prompt Windows or cp `.env.example .env` if using terminal, Ubuntu
@@ -96,9 +43,7 @@ npm install
 - After everything has been set, the final step is to type the code below
 
 ```
-
 php artisan serve
-
 ```
 
 **Frontend**
@@ -106,9 +51,7 @@ php artisan serve
 - To install react js package using this code
 
 ```
-
 npm install
-
 ```
 
 ## Screenshots
@@ -123,4 +66,3 @@ npm install
 - [Alvin Renaldy Novanza](https://www.github.com/mafif21)
 - [Adnan Nauli Harahap](https://www.github.com/mafif21)
 - [Muhammad Rayhan Kurniawan](https://www.github.com/mafif21)
-```
