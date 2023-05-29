@@ -22,6 +22,50 @@ The REST API to the rent car app is described below.
 
 ### Response
 
+    ```
+    {
+    "status": 200,
+    "message": "success",
+    "datas": {
+        "current_page": 1,
+        "data": [
+        ],
+        "first_page_url": "http://localhost:8000/api/rentcars?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http://localhost:8000/api/rentcars?page=1",
+        "links": [
+            {
+                "url": null,
+                "label": "&laquo; Previous",
+                "active": false
+            },
+            {
+                "url": "http://localhost:8000/api/rentcars?page=1",
+                "label": "1",
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "Next &raquo;",
+                "active": false
+            }
+        ],
+        "next_page_url": null,
+        "path": "http://localhost:8000/api/rentcars",
+        "per_page": 20,
+        "prev_page_url": null,
+        "to": 10,
+        "total": 10
+    },
+    "length": 10
+
+}
+
+```
+
+### Response
+
     HTTP/1.1 200 OK
     Date: Thu, 24 Feb 2011 12:36:30 GMT
     Status: 200 OK
@@ -39,8 +83,10 @@ The REST API to the rent car app is described below.
 - So the api is using Laravel
 
 ```
+
 composer install
 npm install
+
 ```
 
 - Copy `.env.example` file to `.env` on the root folder. You can type copy `.env.example .env` if using command prompt Windows or cp `.env.example .env` if using terminal, Ubuntu
@@ -50,7 +96,9 @@ npm install
 - After everything has been set, the final step is to type the code below
 
 ```
+
 php artisan serve
+
 ```
 
 **Frontend**
@@ -58,7 +106,9 @@ php artisan serve
 - To install react js package using this code
 
 ```
+
 npm install
+
 ```
 
 ## Screenshots
@@ -73,3 +123,4 @@ npm install
 - [Alvin Renaldy Novanza](https://www.github.com/mafif21)
 - [Adnan Nauli Harahap](https://www.github.com/mafif21)
 - [Muhammad Rayhan Kurniawan](https://www.github.com/mafif21)
+```
