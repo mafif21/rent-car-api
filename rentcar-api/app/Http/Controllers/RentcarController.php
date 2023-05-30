@@ -16,7 +16,16 @@ class RentcarController extends Controller
     public function index(Request $request)
     {
         $limit = $request->input('limit', 20); // set a default limit of 10
-        $datas = Rentcar::paginate($limit);
+
+        if ($request->get('limit')) {
+            $datas = Rentcar::paginate($limit);
+        } elseif ($request->get('type')) {
+            $datas = Rentcar::where('type', $request->get('type'))->paginate(20);
+        } else if ($request->get('q')) {
+            $datas = Rentcar::where('car_name', 'LIKE', '%' . $request->get('q') . '%')->paginate(20);
+        } else {
+            $datas = Rentcar::paginate($limit);
+        }
 
         if (count($datas) > 0) {
             return response()->json([

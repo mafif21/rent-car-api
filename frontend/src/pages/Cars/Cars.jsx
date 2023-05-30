@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Banner from "../../assets/img/cars-page.jpg";
 import Card from "../../components/Card";
-// import Image from "../../assets/img/jumbotron-image.jpg";
 
 const Cars = () => {
   const [carFind, setCarFind] = useState("");
   const [collections, setCollections] = useState([]);
-  const endpoint = "http://localhost:8000/api/rentcars?limit=12";
+  const endpoint = "http://localhost:8000/api/rentcars";
 
   useEffect(() => {
     getData(endpoint);
