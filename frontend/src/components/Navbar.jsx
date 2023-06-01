@@ -12,7 +12,7 @@ const Navbar = () => {
             </span>
           </Link>
           <div>
-            <ul className="font-medium text-sm flex p-4 md:p-0 mt-4 ">
+            <ul className="font-medium text-sm flex p-4 md:p-0 ">
               <li>
                 <a
                   href="#about"

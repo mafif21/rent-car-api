@@ -17,7 +17,7 @@ const Services = ({ Quality, Exclusive, Safe }) => {
             stress-free.
           </p>
         </div>
-        <div className="mt-10 grid grid-cols-3 gap-8 w-full px-72">
+        <div className="mt-10 grid lg:grid-cols-3 lg:gap-8 gap-4 w-full lg:px-72">
           <ServiceCard
             title="Quality Choice"
             desc="Experience top-notch quality with our car rental service. Choose us for well-maintained vehicles and exceptional customer service."

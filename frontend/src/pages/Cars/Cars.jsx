@@ -34,7 +34,7 @@ const Cars = () => {
           alt="banner"
           className="rounded h-44 w-full object-cover "
         />
-        <div className="absolute text-white font-semibold z-20 text-center inset-0 h-full flex items-center justify-center">
+        <div className="px-10 lg:px-0 absolute text-white font-semibold z-20 text-center inset-0 h-full flex items-center justify-center">
           <p>
             Rent Cars for Every Occasion. Book Now and Enjoy a Smooth Ride with
             Us!
@@ -42,14 +42,14 @@ const Cars = () => {
         </div>
       </div>
 
-      <div className="px-40 mb-10 py-10 bg-slate-100">
-        <div className="mt-10 flex justify-between items-center">
+      <div className="lg:px-40 px-10 lg:mb-10 py-10 bg-slate-100">
+        <div className="mt-10 flex justify-between lg:items-center lg:flex-row flex-col">
           <h1 className="text-xl font-bold">All Cars</h1>
           <div>
             <input
               type="search"
               id="default-search"
-              className=" w-96 p-2 pl-5 text-sm rounded-md text-gray-900 border border-gray-300  bg-gray-50"
+              className=" lg:w-96 w-full p-2 pl-5 text-sm rounded-md text-gray-900 border border-gray-300 bg-gray-50 lg:mt-0 mt-4"
               placeholder="Find Cars..."
               onChange={(e) => setCarFind(e.target.value)}
               value={carFind}
@@ -57,7 +57,7 @@ const Cars = () => {
           </div>
         </div>
 
-        <div className="mt-8 grid grid-cols-4 gap-8">
+        <div className="mt-8 grid lg:grid-cols-4 gap-8 grid-cols-1">
           {collections
             .filter(
               (item) =>
