@@ -5,7 +5,7 @@ import Card from "../../components/Card";
 const Cars = () => {
   const [carFind, setCarFind] = useState("");
   const [collections, setCollections] = useState([]);
-  const endpoint = "http://localhost:8000/api/rentcars";
+  const endpoint = "http://rentycar.website/public/api/rentcars";
 
   useEffect(() => {
     getData(endpoint);

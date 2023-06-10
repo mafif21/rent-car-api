@@ -2,11 +2,12 @@ import React from "react";
 
 const Card = ({ title, merk, type, image, price, status, delay }) => {
   const cleanImage = image.substring(image.lastIndexOf("/") + 1);
-  const imageUrl = `http://localhost:8000/storage/rentcar-images/${cleanImage}`;
+  const imageUrl = `http://rentycar.website/storage/rentcar-images/${cleanImage}`;
   const rupiahFormat = new Intl.NumberFormat("id-ID", {
     style: "currency",
     currency: "IDR",
   }).format(price);
+
   return (
     <div
       className=" bg-white border border-gray-200 rounded-lg shadow"
